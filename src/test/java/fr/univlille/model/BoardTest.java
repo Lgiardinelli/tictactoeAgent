@@ -94,6 +94,18 @@ public class BoardTest extends TestCase {
         assertNull(getCellValue(2, 2));
     }
 
+    public void testAdd() throws Exception {
+        board.setCurrentTurn(X);
+        setCell(2, 0, X);
+        setCell(1, 1, X);
+
+        board.mark(0, 2);
+
+        assertEquals(X, board.getWinner());
+        assertEquals(Board.GameState.FINISHED, board.getState());
+        assertTrue(board.isInFinishedMode());
+    }
+
     public void testMarkCreatesHorizontalWin() throws Exception {
         board.setCurrentTurn(X);
         setCell(0, 0, X);
